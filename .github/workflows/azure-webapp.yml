@@ -1,0 +1,33 @@
+name: Deploy PHP App to Azure
+
+on:
+  push:
+    branches:
+      - master  # Cambia "main" si usas otra rama para el despliegue
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'  # Cambia a tu versión de PHP si es diferente
+
+    - name: Install dependencies
+      run: |
+        composer install
+        npm install
+        npm run build
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'MiGuiaLocal'  # Reemplaza con el nombre de tu App Service
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: '.'
