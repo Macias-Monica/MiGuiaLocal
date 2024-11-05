@@ -48,4 +48,4 @@ jobs:
         app-name: 'MiGuiaLocal'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_67a26c6683664af1b2a1826d8cfdb19c }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_f6dee84dec9849349203ee02ccdaa267 }}/appsvc/staticsite:${{ github.sha }}'
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername }}/appsvc/staticsite:${{ github.sha }}'
