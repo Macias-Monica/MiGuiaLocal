@@ -1,0 +1,47 @@
+Tablas SQL creadas para la página
+
+CREATE TABLE mglUsuarios (
+id int identity(1,1),
+nombre varchar(max),
+usuario varchar(max),
+contrasena varchar(max),
+correo varchar(max),
+telefono varchar(max),
+fechaRegistro date)
+
+CREATE TABLE mglNegocios (
+id int identity(1,1),
+categoria varchar(50),
+nombreNegocio varchar(255),
+servicioDomicilio char(1),
+domicilio varchar(255),	
+telefono varchar(50),	
+ubicacionMaps varchar(max),
+)
+
+CREATE TABLE mglNegociosImagenes (
+id int identity(1,1),
+categoria varchar(50),
+nombreNegocio varchar(255),
+imagenNegocio varchar(255),
+rutaimagenNegocio varchar(255),
+)
+
+CREATE TABLE mglUsuariosNegocios (
+id int identity(1,1),
+nombreDueno varchar(max),
+nombreNegocio varchar(255),
+categoria varchar(50),
+usuario varchar(max),
+contrasena varchar(max),
+correo varchar(max),
+telefono varchar(max),
+fechaRegistro date
+)
+
+CREATE TABLE mglCategorias(
+id int identity(1,1),
+categoria varchar(50),
+icono varchar(100)
+)
+
