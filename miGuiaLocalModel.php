@@ -20,11 +20,13 @@ switch ($opc) {
                             FROM mglNegocios
                         )
                         SELECT n.id, n.categoria, n.nombreNegocio, n.servicioDomicilio, n.domicilio, n.telefono, n.ubicacionMaps, 
-                        (CASE WHEN n.rutaImagenNegocio = 'src\images\Negocios\' THEN '' WHEN n.rutaImagenNegocio = 'src\images\Negocios\*' THEN '' ELSE n.rutaImagenNegocio END)rutaImagenNegocio  , n.Horario, v.calificacion,
-                        v.comentarios,v.fecha,v.usuario
+                        (CASE WHEN n.rutaImagenNegocio = 'src\images\Negocios\' THEN '' 
+                        WHEN n.rutaImagenNegocio = 'src\images\Negocios\*' THEN '' 
+                        ELSE n.rutaImagenNegocio END)rutaImagenNegocio, n.Horario, AVG(v.calificacion) calificacion                       
                         FROM UniqueBusinesses n
                         LEFT JOIN mglValoraciones v ON v.idNegocio = n.id
-                        WHERE n.row_num = 1";
+                        WHERE n.row_num = 1
+                        group by n.id, n.categoria, n.nombreNegocio, n.servicioDomicilio, n.domicilio, n.telefono, n.ubicacionMaps,n.rutaImagenNegocio,n.Horario,v.calificacion";
             $stmt = $conn->prepare($sqlNegocios);
             $stmt->execute();
             $negocios = $stmt->fetchAll(PDO::FETCH_ASSOC);

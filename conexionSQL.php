@@ -1,8 +1,8 @@
 <?php
-$serverName = "miguialocal.database.windows.net"; 
+$serverName = "Foamy-PC"; 
 $dbname = "miGuiaLocal";
 $username = "userMGL";
-$password = "pwsMGL00";
+$password = "pwsMGL";
 //$password = "pwsMGL";
 //en azure la pass es pwsMGL00
 try {
